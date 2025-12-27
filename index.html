@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Система обмена сообщений</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>✉️</text></svg>">
+</head>
+<body>
+    <div class="app-container">
+        <header class="app-header">
+            <h1><i class="fas fa-envelope"></i> Корпоративная почта</h1>
+            <div class="header-info">
+                <div class="refresh-status">
+                    <i class="fas fa-sync-alt"></i>
+                    <span>Автообновление: каждые <span id="current-interval">10</span> сек</span>
+                </div>
+                <button id="refresh-now" class="btn btn-primary">
+                    <i class="fas fa-redo"></i> Обновить сейчас
+                </button>
+            </div>
+        </header>
+
+        <main class="app-main">
+            <section class="widget-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-inbox"></i> Входящие сообщения</h2>
+                    <div class="controls">
+                        <div class="control-group">
+                            <label>
+                                <input type="checkbox" id="auto-refresh" checked>
+                                Автообновление
+                            </label>
+                        </div>
+                        <div class="control-group">
+                            <label>Интервал (сек):</label>
+                            <select id="interval-select">
+                                <option value="5">5</option>
+                                <option value="10" selected>10</option>
+                                <option value="30">30</option>
+                                <option value="60">60</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="widget-content">
+                    <div class="stats-bar">
+                        <div class="stat">
+                            <span class="stat-label">Всего сообщений:</span>
+                            <span id="total-messages" class="stat-value">0</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-label">Новых:</span>
+                            <span id="new-messages" class="stat-value">0</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-label">Последнее обновление:</span>
+                            <span id="last-update" class="stat-value">—</span>
+                        </div>
+                    </div>
+
+                    <div class="loading-overlay" id="loading">
+                        <div class="spinner"></div>
+                        <span>Загрузка сообщений...</span>
+                    </div>
+
+                    <div class="error-overlay" id="error">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <h3>Ошибка подключения</h3>
+                        <p>Не удалось загрузить сообщения. Попробуйте позже.</p>
+                        <button id="retry-btn" class="btn btn-secondary">Повторить попытку</button>
+                    </div>
+
+                    <div class="messages-container">
+                        <table class="messages-table">
+                            <thead>
+                                <tr>
+                                    <th width="25%">Отправитель</th>
+                                    <th width="45%">Тема</th>
+                                    <th width="30%">Дата получения</th>
+                                </tr>
+                            </thead>
+                            <tbody id="messages-body">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <div class="modal" id="message-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Просмотр сообщения</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body" id="message-modal-body">
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary modal-close-btn">Закрыть</button>
+            </div>
+        </div>
+    </div>
+<script defer src="/bundle.js"></script></body>
+</html>
