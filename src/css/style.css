@@ -697,19 +697,16 @@ body {
     border-radius: 0 0 20px 20px;
 }
 
-/* Добавляем плавные переходы для всех интерактивных элементов */
 a, button, select, .subject, .stat, .control-group, .meta-item {
     transition: all var(--transition-normal);
 }
 
-/* Эффект для активных элементов */
 :focus-visible {
     outline: 3px solid var(--primary-color);
     outline-offset: 2px;
     border-radius: 6px;
 }
 
-/* Исправление выравнивания в таблице */
 .messages-table {
     width: 100%;
     border-collapse: separate;
@@ -752,7 +749,6 @@ a, button, select, .subject, .stat, .control-group, .meta-item {
     min-width: 200px;
 }
 
-/* Исправление для отправителя */
 .sender {
     display: flex;
     align-items: center;
@@ -809,14 +805,12 @@ a, button, select, .subject, .stat, .control-group, .meta-item {
     flex-shrink: 0;
 }
 
-/* Убираем лишние псевдоэлементы */
 .date::after,
 .priority::after,
 .sender::after {
     content: none !important;
 }
 
-/* Исправляем hover эффекты */
 .messages-table tbody tr {
     transition: all var(--transition-normal);
 }
@@ -830,7 +824,6 @@ a, button, select, .subject, .stat, .control-group, .meta-item {
     background: transparent;
 }
 
-/* Исправляем subject */
 .subject {
     position: relative;
     cursor: pointer;
@@ -855,18 +848,15 @@ a, button, select, .subject, .stat, .control-group, .meta-item {
     right: -24px;
 }
 
-/* Убираем лишние анимации для не-subject ячеек */
 .messages-table td:not(.subject):hover {
     transform: none;
 }
 
-/* Для пустых состояний */
 .empty-state td {
     padding: 80px 20px !important;
     border-bottom: none !important;
 }
 
-/* Плавное появление строк */
 @keyframes rowAppear {
     from {
         opacity: 0;

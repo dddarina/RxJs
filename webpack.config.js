@@ -115,7 +115,6 @@ module.exports = {
       devServer.app.get('/messages/unread', (req, res) => {
         console.log(`📡 [${new Date().toLocaleTimeString()}] Запрос /messages/unread`);
 
-        // Только 1-3 последних сообщения
         const messageCount = Math.min(allMessages.length, 3);
         const recentMessages = allMessages.slice(0, messageCount);
 
